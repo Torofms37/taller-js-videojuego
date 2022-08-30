@@ -1,4 +1,6 @@
-const emojis={'-':' ','O':'🚪','X':'💣','I':'🎁','PLAYER':'💀','BOMB_COLLISION':'🔥','GAME_OVER':'👎','WIN':'🏆','HEART':'🤍',};const maps=[];maps.push(`
+const emojis={'-':' ','O':'🚪','X':'💣','I':'🎁','PLAYER':'💀','B':'🔥','GAME_OVER':'👎','WIN':'🏆','HEART':'🤍',};
+const maps=[];
+maps.push(`
   IXXXXXXXXX
   -XXXXXXXXX
   -XXXXXXXXX
@@ -9,6 +11,17 @@ const emojis={'-':' ','O':'🚪','X':'💣','I':'🎁','PLAYER':'💀','BOMB_COL
   -XXXXXXXXX
   -XXXXXXXXX
   OXXXXXXXXX
+  `);maps.push(`
+  IXXXO-----
+  -XXXXXXXX-
+  -XXXXXXXX-
+  -XXXXXXXX-
+  -XXXXXXXX-
+  -XXXXXXXX-
+  -XXXXXXXX-
+  -XXXXXXXX-
+  -X---X----
+  ---X---X--
 `);maps.push(`
   O--XXXXXXX
   X--XXXXXXX
@@ -31,4 +44,4 @@ const emojis={'-':' ','O':'🚪','X':'💣','I':'🎁','PLAYER':'💀','BOMB_COL
   XX-XXXXXXX
   XX-----OXX
   XXXXXXXXXX
-`);
+  `);

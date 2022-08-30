@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Touch&Boom</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Platzriv - Jueguito online de carreras y calaveras</title>
 </head>
 <body>
-    <div class="game-container">
-        <canvas id="game"></canvas>
-    </div>
-
-    <div class="btns">
-        <button id="up">Arriba</button>
-        <button id="left">Izquierda</button>
-        <button id="right">Derecha</button>
-        <button id="down">Abajo</button>
-    </div>
-
-    <div class="mesagges">
-        <p>Vidas: <span id="lives"></span></p>
-        <p>Tiempo: <span id="time"></span></p>
-        <p>Record: <span id="record"></span></p>
-        <p id="result">Resultado:</p>
-    </div>        
+  <div class="game-container">
+    <canvas id="game"></canvas>
     
-    <script src="./game.js"></script>
-    <script src="./maps.js"></script>    
+    <div class="btns">
+      <button id="up">Arriba</button>
+      <button id="left">Izquierda</button>
+      <button id="right">Derecha</button>
+      <button id="down">Abajo</button>
+      <button id="reset"> juego</button>
+    </div>
 
+    <div class="messages">
+      <p>Vidas: <span id="lives"></span></p>
+      <p>Tiempo: ⏰<span id="time"></span></p>
+      <p>Record: 🏁<span id="record"></span></p>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script src="maps.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>

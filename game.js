@@ -7,12 +7,13 @@ const btnDown = document.querySelector('#down');
 const spanLives = document.querySelector('#lives');
 const spanTime = document.querySelector('#time');
 const spanRecord = document.querySelector('#record');
-const ReSpanTime = document.querySelector('#result')
+const pResult = document.querySelector('#result');
+const botonReiniciar = document.querySelector('#reset')
 
 let canvasSize;
 let elementsSize;
 let level = 0;
-let lives = 5;
+let lives = 3;
 
 let timeStart;
 let timePlayer;
@@ -22,37 +23,44 @@ const playerPosition = {
   x: undefined,
   y: undefined,
 };
-
 const giftPosition = {
   x: undefined,
   y: undefined,
 };
-
 let enemyPositions = [];
 
 window.addEventListener('load', setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
 
+function fixNumber(n) {
+  return Number(n.toFixed(2));
+}
+
 function setCanvasSize() {
-  if (window.innerHeight > window.innerWidth) {
-    canvasSize = window.innerWidth * 0.8;
+  if (window.innerHeight >= window.innerWidth) {
+    canvasSize = window.innerWidth * 0.6;
   } else {
-    canvasSize = window.innerHeight * 0.8;
+    canvasSize = window.innerHeight * 0.6;
   }
+  
+  canvasSize = Number(canvasSize.toFixed(0));
   
   canvas.setAttribute('width', canvasSize);
   canvas.setAttribute('height', canvasSize);
   
-  elementsSize = canvasSize / 10.2;
+  elementsSize = canvasSize / 10.8;
 
+  playerPosition.x = undefined;
+  playerPosition.y = undefined;
   startGame();
 }
 
 function startGame() {
   console.log({ canvasSize, elementsSize });
+  // console.log(window.innerWidth, window.innerHeight);
 
   game.font = elementsSize + 'px Verdana';
-  game.textAlign = 'end';
+  game.textAlign = 'center';
 
   const map = maps[level];
 
@@ -86,7 +94,7 @@ function startGame() {
         if (!playerPosition.x && !playerPosition.y) {
           playerPosition.x = posX;
           playerPosition.y = posY;
-          console.log({playerPosition});
+          // console.log({playerPosition});
         }
       } else if (col == 'I') {
         giftPosition.x = posX;
@@ -97,11 +105,12 @@ function startGame() {
           y: posY,
         });
       }
-      
+
       game.fillText(emoji, posX, posY);
     });
   });
 
+  botonReiniciar.addEventListener('click', reiniciarJuego);
   movePlayer();
 }
 
@@ -139,7 +148,7 @@ function levelFail() {
   
   if (lives <= 0) {
     level = 0;
-    lives = 5;
+    lives = 3;
     timeStart = undefined;
   }
 
@@ -152,21 +161,27 @@ function gameWin() {
   console.log('¡Terminaste el juego!');
   clearInterval(timeInterval);
 
-  const recordTime = localStorage.getItem('record_time')
+  const recordTime = localStorage.getItem('record_time');
   const playerTime = Date.now() - timeStart;
 
   if (recordTime) {
     if (recordTime >= playerTime) {
-      localStorage.setItem('record_time', playerTime)
-      ReSpanTime.innerHTML = 'Superaste el Record';
+      localStorage.setItem('record_time', playerTime);
+      pResult.innerHTML = 'SUPERASTE EL RECORD :)';
     } else {
-      ReSpanTime.innerHTML = 'Ni pepe, no pasaste carnal';
+      pResult.innerHTML = 'lo siento, no superaste el records :(';
     }
   } else {
-    localStorage.setItem('rcord_time', playerTime);
-    ReSpanTime.innerHTML = 'La primera vez es de aprendizaje';
+    localStorage.setItem('record_time', playerTime);
+    pResult.innerHTML = 'Primera vez? Muy bien, pero ahora trata de superar tu tiempo :)';
   }
-  }
+
+  console.log({recordTime, playerTime});
+}
+
+function reiniciarJuego() {
+  location.reload();
+}
 
 function showLives() {
   const heartsArray = Array(lives).fill(emojis['HEART']); // [1,2,3]
@@ -176,14 +191,13 @@ function showLives() {
 }
 
 function showTime() {
-  spanTime.innerHTML = Date.now() - timeStart;
+  spanTime.innerHTML = (Date.now() - timeStart).toFixed(0)/100 + ' segundos';
 }
 
 function showRecord() {
   spanRecord.innerHTML = localStorage.getItem('record_time');
 }
 
-// movimientos del jugador!!
 window.addEventListener('keydown', moveByKeys);
 btnUp.addEventListener('click', moveUp);
 btnLeft.addEventListener('click', moveLeft);
