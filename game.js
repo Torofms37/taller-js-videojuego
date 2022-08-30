@@ -13,7 +13,7 @@ const botonReiniciar = document.querySelector('#reset')
 let canvasSize;
 let elementsSize;
 let level = 0;
-let lives = 3;
+let lives = 5;
 
 let timeStart;
 let timePlayer;
@@ -61,6 +61,7 @@ function startGame() {
 
   game.font = elementsSize + 'px Verdana';
   game.textAlign = 'center';
+  game.justifyContent = 'center';
 
   const map = maps[level];
 
@@ -148,7 +149,7 @@ function levelFail() {
   
   if (lives <= 0) {
     level = 0;
-    lives = 3;
+    lives = 5;
     timeStart = undefined;
   }
 

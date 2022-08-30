@@ -1,6 +1,7 @@
 :root {
   --background: linear-gradient(to right top, #d1fffc, #b6f1f8, #9ee2f6, #8cd2f4, #83c1f1, #83c1f1, #83c1f1, #83c1f1, #8cd2f4, #9ee2f6, #b6f1f8, #d1fffc);
   --border: linear-gradient(to right top, #ff6f91, #ff7c81, #ff8b72, #ff9c67, #ffae61, #ffba60, #ffc660, #ffd361, #fedc64, #fde567, #fbef6c, #f9f871);
+  --background-inside: linear-gradient(to right top, #ffffff, #f8fbff, #e9f9ff, #d7f9ff, #c4f9ff, #c4f9ff, #c4f9ff, #c4f9ff, #d7f9ff, #e9f9ff, #f8fbff, #ffffff);
 }
 
 * {
@@ -25,7 +26,8 @@ body {
 }
 
 canvas {
-  border: 4px solid rgb(198, 198, 198);
+  background: var(--background-inside);
+  border: 4px solid rgb(221, 193, 193);
   border-radius: 8px;
 }
 
@@ -69,11 +71,18 @@ button:not(:last-child) {
 }
 
 .messages {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.7px);
+  -webkit-backdrop-filter: blur(4.7px);
+  border: 1px solid rgba(255, 255, 255, 0.44);
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  padding: 6px;
   width: 80%;
-  max-width: 460px;
+  max-width: 260px;
 }
 
 p {
